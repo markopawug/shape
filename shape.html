@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    canvas {
+      border: 1px solid rgb(20, 40, 220);
+    }
+    h2{
+      text 
+
+    }
+  </style>
+</head>
+<body>                    
+
+
+
+<canvas id="myCanvas" width="700" height="500"></canvas>
+
+<script>
+  // Get the canvas element and its context
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Draw circles  using arc method
+  drawCircle(200, 110, 40, 'yellow');
+
+  function drawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+  }
+
+  // Draw a triangle
+  function drawTriangle(x1, y1, x2, y2, x3, y3, color) {
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.lineTo(x3, y3);
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  // Draw a star
+  function drawStar(x, y, radius1, radius2, color) {
+    var angle = 0;
+    var angleIncrement = Math.PI / 5;
+
+    ctx.beginPath();
+    ctx.moveTo(x, y - radius1);
+
+    for (var i = 0; i < 10; i++) {
+      x = x + radius1 * Math.cos(angle);
+      y = y + radius1 * Math.sin(angle);
+      ctx.lineTo(x, y);
+
+      x = x + radius2 * Math.cos(angle + angleIncrement);
+      y = y + radius2 * Math.sin(angle + angleIncrement);
+      ctx.lineTo(x, y);
+
+      angle += angleIncrement;
+    }
+
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  
+     
+
+  // Draw shapes
+  drawCircle(70, 100, 50, 'pink');
+  drawSquare(280, 50, 100, 100, 'green');
+  drawRectangle(540, 70, 150, 80, 'blue');
+  drawOval(470, 100, 50, 80, 'orange');
+  drawTriangle(300, 300, 350, 450, 250, 450, 'purple');
+  drawStar(150, 200, 10, 30, 'red');
+  
+
+  // Draw a square
+  function drawSquare(x, y, width, height, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  }
+
+  // Draw a rectangle
+  function drawRectangle(x, y, width, height, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  }
+
+  // Draw an oval
+  function drawOval(x, y, radiusX, radiusY, color) {
+    ctx.beginPath();
+    ctx.ellipse(x, y, radiusX, radiusY, 0, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.stroke();
+  }
+
+</script>
+
+</body>
+</html>
+            
